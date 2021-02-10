@@ -11,6 +11,9 @@ class SocialController extends Controller
     {
           return Socialite::driver($service)->redirect();
     }
-    
-
+    public function callback($service)
+    {
+        $user = Socialite::driver($service) -> user() ;
+        return response() -> json($user);
+    }
 }
